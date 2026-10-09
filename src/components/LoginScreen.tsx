@@ -14,7 +14,6 @@ import {
   Leaf,
   Star,
   Users,
-  Check,
 } from "lucide-react";
 
 export type RoleType = "student" | "staff" | "admin" | "alumni";

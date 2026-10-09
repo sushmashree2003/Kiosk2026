@@ -108,7 +108,7 @@ export default function AlumniDashboard({ onBackToKiosk }: DashboardProps) {
         {/* Banner */}
         <section
           className="dash-hero-banner"
-          style={{ backgroundImage: `url('/campus_banner.jpg')`, height: "96px", padding: "0.65rem 1.6rem" }}
+          style={{ backgroundImage: `url('/campus_banner.jpg')` }}
         >
           <div className="dash-hero-left">
             <h2 className="dash-hero-title" style={{ fontSize: "1.5rem" }}>
@@ -422,23 +422,23 @@ export default function AlumniDashboard({ onBackToKiosk }: DashboardProps) {
           {/* Right Column (AI Assistant + Current Affairs + Photo Gallery) */}
           <div className="alumni-right-col">
             {/* AI Assistant */}
-            <div className="ai-assistant-card" style={{ height: "115px", background: "linear-gradient(135deg, #0b2f56 0%, #1d4ed8 100%)", padding: "0.65rem 0.85rem", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-                <div className="ai-bot-circle" style={{ width: 34, height: 34, flexShrink: 0 }}>
+            <div className="ai-assistant-card" style={{ background: "linear-gradient(135deg, #0b2f56 0%, #1d4ed8 100%)", padding: "0.55rem 0.75rem", justifyContent: "space-between" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}>
+                <div className="ai-bot-circle" style={{ width: 32, height: 32, flexShrink: 0 }}>
                   <img src="/school_bot.jpg" alt="School Bot" />
                 </div>
                 <div className="ai-header-text">
-                  <h3 style={{ fontSize: "0.92rem", margin: 0, display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                  <h3 style={{ fontSize: "0.88rem", margin: 0, display: "flex", alignItems: "center", gap: "0.3rem" }}>
                     AI Assistant <Sparkles size={13} style={{ color: "#facc15" }} />
                   </h3>
-                  <p style={{ fontSize: "0.63rem", margin: "2px 0 0 0", opacity: 0.88, lineHeight: 1.2 }}>
+                  <p style={{ fontSize: "0.6rem", margin: "2px 0 0 0", opacity: 0.88, lineHeight: 1.2 }}>
                     Ask anything about your alma mater, events, alumni network and more.
                   </p>
                 </div>
               </div>
 
-              <div className="ai-input-wrap" style={{ marginTop: "0.35rem" }}>
-                <Mic size={14} style={{ color: "#94a3b8", marginRight: "0.4rem", flexShrink: 0 }} />
+              <div className="ai-input-wrap" style={{ marginTop: "0.3rem" }}>
+                <Mic size={14} style={{ color: "#94a3b8", marginRight: "0.35rem", flexShrink: 0 }} />
                 <input
                   type="text"
                   placeholder={chatResponse ? chatResponse : "Type your question..."}
@@ -453,7 +453,7 @@ export default function AlumniDashboard({ onBackToKiosk }: DashboardProps) {
             </div>
 
             {/* Current Affairs with Thumbnails */}
-            <div className="dash-card" style={{ height: "135px" }}>
+            <div className="dash-card">
               <div className="dash-card-header">
                 <div className="dash-card-title">
                   <div className="dash-card-icon" style={{ background: "#dbeafe", color: "#1d4ed8" }}>
@@ -463,7 +463,7 @@ export default function AlumniDashboard({ onBackToKiosk }: DashboardProps) {
                 </div>
                 <span className="dash-view-all">View All →</span>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1 }}>
+              <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, minHeight: 0, overflowY: "auto" }}>
                 <div className="alumni-news-row">
                   <img src="/campus_banner.jpg" alt="News 1" className="alumni-news-thumb" />
                   <div className="alumni-news-info">
@@ -494,7 +494,7 @@ export default function AlumniDashboard({ onBackToKiosk }: DashboardProps) {
             </div>
 
             {/* Photo Gallery Carousel */}
-            <div className="dash-card" style={{ height: "120px" }}>
+            <div className="dash-card">
               <div className="dash-card-header">
                 <div className="dash-card-title">
                   <div className="dash-card-icon" style={{ background: "#fce7f3", color: "#db2777" }}>

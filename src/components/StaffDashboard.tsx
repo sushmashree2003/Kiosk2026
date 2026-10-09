@@ -104,7 +104,7 @@ export default function StaffDashboard({ onBackToKiosk }: DashboardProps) {
             {/* Banner */}
             <section
               className="dash-hero-banner"
-              style={{ backgroundImage: `url('/campus_banner.jpg')`, height: "105px" }}
+              style={{ backgroundImage: `url('/campus_banner.jpg')` }}
             >
               <div className="dash-hero-left">
                 <h2 className="dash-hero-title">Welcome Back, Ramesh Kumar</h2>
@@ -131,7 +131,7 @@ export default function StaffDashboard({ onBackToKiosk }: DashboardProps) {
                     <div className="dash-card-icon" style={{ background: "#f3e8ff", color: "#9333ea" }}>
                       <BookOpen size={14} />
                     </div>
-                    <span>Today's Classes</span>
+                    <span>Today&apos;s Classes</span>
                   </div>
                   <span className="dash-view-all">View All →</span>
                 </div>
@@ -175,7 +175,7 @@ export default function StaffDashboard({ onBackToKiosk }: DashboardProps) {
                     <div className="dash-card-icon" style={{ background: "#ffedd5", color: "#ea580c" }}>
                       <CalendarDays size={14} />
                     </div>
-                    <span>Today's Meetings</span>
+                    <span>Today&apos;s Meetings</span>
                   </div>
                   <span className="dash-view-all">View All →</span>
                 </div>
@@ -254,7 +254,7 @@ export default function StaffDashboard({ onBackToKiosk }: DashboardProps) {
                       <span className="event-month">Oct</span>
                     </div>
                     <div className="event-text">
-                      <div className="event-name">Teachers' Training Program</div>
+                      <div className="event-name">Teachers&apos; Training Program</div>
                       <div className="event-meta">09:00 AM - 01:00 PM • Hall</div>
                     </div>
                     <ChevronRight size={14} style={{ color: "#94a3b8" }} />
@@ -315,7 +315,7 @@ export default function StaffDashboard({ onBackToKiosk }: DashboardProps) {
                     <div className="dash-card-icon" style={{ background: "#dcfce7", color: "#15803d" }}>
                       <BarChart3 size={14} />
                     </div>
-                    <span>Students' Performance</span>
+                    <span>Students&apos; Performance</span>
                   </div>
                   <span className="dash-view-all">View All →</span>
                 </div>
@@ -461,7 +461,7 @@ export default function StaffDashboard({ onBackToKiosk }: DashboardProps) {
             </div>
 
             {/* Photo Gallery */}
-            <div className="dash-card" style={{ height: "140px" }}>
+            <div className="dash-card">
               <div className="dash-card-header">
                 <div className="dash-card-title">
                   <div className="dash-card-icon" style={{ background: "#fce7f3", color: "#db2777" }}>
@@ -485,7 +485,7 @@ export default function StaffDashboard({ onBackToKiosk }: DashboardProps) {
             </div>
 
             {/* Virtual Tour */}
-            <div className="dash-card" style={{ height: "135px" }}>
+            <div className="dash-card">
               <div className="dash-card-header">
                 <div className="dash-card-title">
                   <span>Virtual Tour</span>

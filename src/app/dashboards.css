@@ -1,14 +1,15 @@
 /* ============================================================
-   GREEN VALLEY PUBLIC SCHOOL — PORTAL DASHBOARDS (NO-SCROLL KIOSK)
-   Strict 100vh single-page widescreen kiosk layout without scrolling
+   GREEN VALLEY PUBLIC SCHOOL — PORTAL DASHBOARDS (RESPONSIVE KIOSK)
+   Strict 100dvh single-page widescreen kiosk layout with fluid scaling
    ============================================================ */
 
-/* DASHBOARD PAGE SHELL - STRICT 100vh, NO SCROLL */
+/* DASHBOARD PAGE SHELL - STRICT 100dvh, NO UNINTENDED SCROLL */
 .dashboard-page {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   overflow: hidden;
   background-color: #f1f5f9;
   background-image: 
@@ -21,51 +22,69 @@
   flex-direction: column;
   justify-content: space-between;
   user-select: none;
+  box-sizing: border-box;
 }
 
-/* TOP NAVBAR - COMPACT */
+/* Custom Slim Scrollbars for internal card scrolling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.6);
+}
+
+/* TOP NAVBAR */
 .dash-navbar {
   flex-shrink: 0;
-  height: 50px;
+  height: clamp(46px, 5.2vh, 58px);
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-  padding: 0.35rem 1.25rem;
+  padding: 0.25rem clamp(0.75rem, 1.5vw, 1.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: clamp(0.5rem, 1vw, 1rem);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .dash-logo-link {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: clamp(0.45rem, 0.6vw, 0.65rem);
   text-decoration: none;
   cursor: pointer;
   flex-shrink: 0;
 }
 
 .dash-logo-box {
-  width: 36px;
-  height: 36px;
+  width: clamp(30px, 3.8vh, 38px);
+  height: clamp(30px, 3.8vh, 38px);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .dash-school-text h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.15rem;
+  font-size: clamp(0.95rem, 1.2vw, 1.2rem);
   font-weight: 700;
   color: #0c3558;
   line-height: 1.1;
 }
 
 .dash-school-text p {
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 0.7vw, 0.7rem);
   font-weight: 600;
   color: #0284c7;
   letter-spacing: 0.03em;
@@ -74,10 +93,11 @@
 /* NAVBAR SEARCH */
 .dash-search-box {
   flex: 1;
-  max-width: 440px;
+  max-width: clamp(240px, 30vw, 440px);
   position: relative;
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
 .dash-search-input {
@@ -85,11 +105,12 @@
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 9999px;
-  padding: 0.38rem 1rem 0.38rem 2.3rem;
-  font-size: 0.78rem;
+  padding: 0.35rem 0.85rem 0.35rem 2.2rem;
+  font-size: clamp(0.72rem, 0.8vw, 0.8rem);
   color: #1e293b;
   outline: none;
-  height: 32px;
+  height: clamp(32px, 3.8vh, 38px);
+  user-select: text;
 }
 
 .dash-search-input:focus {
@@ -100,7 +121,7 @@
 
 .dash-search-icon {
   position: absolute;
-  left: 0.8rem;
+  left: 0.75rem;
   color: #94a3b8;
   pointer-events: none;
 }
@@ -109,14 +130,14 @@
 .dash-nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: clamp(0.45rem, 0.8vw, 0.85rem);
   flex-shrink: 0;
 }
 
 .dash-icon-btn {
   position: relative;
-  width: 34px;
-  height: 34px;
+  width: clamp(34px, 4vh, 40px);
+  height: clamp(34px, 4vh, 40px);
   border-radius: 50%;
   background: #f1f5f9;
   border: 1px solid #e2e8f0;
@@ -125,6 +146,7 @@
   justify-content: center;
   color: #475569;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .dash-notification-badge {
@@ -141,25 +163,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid #ffffff;
 }
 
 .dash-profile-pill {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.2rem 0.7rem 0.2rem 0.3rem;
-  border-radius: 9999px;
-  background: #ffffff;
+  gap: clamp(0.35rem, 0.5vw, 0.55rem);
+  padding: 0.2rem clamp(0.4rem, 0.6vw, 0.65rem);
+  background: #f8fafc;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  border-radius: 9999px;
 }
 
 .dash-user-avatar {
-  width: 30px;
-  height: 30px;
+  width: clamp(28px, 3.5vh, 34px);
+  height: clamp(28px, 3.5vh, 34px);
   border-radius: 50%;
   object-fit: cover;
+  border: 1.5px solid #ffffff;
 }
 
 .dash-user-info {
@@ -168,14 +189,14 @@
 }
 
 .dash-user-name {
-  font-size: 0.78rem;
+  font-size: clamp(0.72rem, 0.8vw, 0.8rem);
   font-weight: 700;
   color: #0f172a;
   line-height: 1.1;
 }
 
 .dash-user-role {
-  font-size: 0.66rem;
+  font-size: clamp(0.6rem, 0.68vw, 0.68rem);
   font-weight: 500;
   color: #64748b;
   line-height: 1.1;
@@ -184,12 +205,12 @@
 .dash-clock-widget {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.3rem 0.75rem;
+  gap: 0.4rem;
+  padding: 0.25rem clamp(0.45rem, 0.6vw, 0.75rem);
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
-  font-size: 0.72rem;
+  font-size: clamp(0.66rem, 0.74vw, 0.74rem);
   font-weight: 600;
   color: #334155;
 }
@@ -201,13 +222,15 @@
   background: #0284c7;
   color: #ffffff;
   border: none;
-  padding: 0.4rem 0.85rem;
+  padding: clamp(0.32rem, 0.6vh, 0.45rem) clamp(0.65rem, 0.9vw, 0.95rem);
+  min-height: 36px;
   border-radius: 9999px;
-  font-size: 0.75rem;
+  font-size: clamp(0.7rem, 0.78vw, 0.78rem);
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .dash-kiosk-back-btn:hover {
@@ -215,50 +238,52 @@
   transform: translateY(-1px);
 }
 
-/* LIVE TICKER BAR - COMPACT (30px) */
+/* LIVE TICKER BAR */
 .dash-ticker-bar {
   flex-shrink: 0;
-  height: 28px;
+  height: clamp(24px, 3vh, 30px);
   background: #ffffff;
   border-bottom: 1px solid #e2e8f0;
-  padding: 0 1.25rem;
+  padding: 0 clamp(0.75rem, 1.5vw, 1.25rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.72rem;
+  gap: 0.85rem;
+  font-size: clamp(0.66rem, 0.74vw, 0.74rem);
   overflow: hidden;
 }
 
 .ticker-badge-live {
   background: #ef4444;
   color: #ffffff;
-  padding: 0.15rem 0.5rem;
+  padding: 0.12rem 0.45rem;
   border-radius: 4px;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: clamp(0.58rem, 0.66vw, 0.66rem);
   letter-spacing: 0.04em;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .ticker-content {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
   overflow: hidden;
   white-space: nowrap;
   color: #334155;
   font-weight: 500;
+  min-width: 0;
 }
 
 .ticker-item {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
+  white-space: nowrap;
 }
 
 .ticker-tag {
@@ -266,29 +291,32 @@
   color: #0284c7;
 }
 
-/* MAIN CONTENT CONTAINER - FILLS VIEWPORT, NO SCROLL */
+/* MAIN CONTENT CONTAINER */
 .dash-main-content {
   flex: 1;
-  min-height: 0; /* Crucial: allows flex child to shrink and fit without overflow */
-  padding: 0.5rem 1rem 0.4rem 1rem;
-  max-width: 1720px;
+  min-height: 0;
+  min-width: 0;
+  padding: clamp(0.25rem, 0.7vh, 0.65rem) clamp(0.5rem, 1.2vw, 1.25rem);
+  max-width: clamp(1360px, 95vw, 2400px);
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.45rem;
+  gap: clamp(0.25rem, 0.5vh, 0.5rem);
   overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* HERO BANNER - SLIM KIOSK HEADER */
+/* HERO BANNER */
 .dash-hero-banner {
   position: relative;
   flex-shrink: 0;
-  border-radius: 14px;
+  border-radius: clamp(10px, 1.5vh, 14px);
   overflow: hidden;
-  padding: 0.85rem 1.75rem;
-  height: 100px;
+  padding: clamp(0.4rem, 1vh, 0.75rem) clamp(0.85rem, 1.5vw, 1.75rem);
+  height: clamp(70px, 9.5vh, 105px);
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -313,35 +341,35 @@
 
 .dash-hero-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.55rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.55rem);
   font-weight: 800;
   color: #0c3558;
   line-height: 1.1;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .dash-hero-desc {
-  font-size: 0.78rem;
+  font-size: clamp(0.68rem, 0.8vw, 0.78rem);
   font-weight: 500;
   color: #475569;
   line-height: 1.25;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .dash-hero-tags {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
 .dash-hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
   background: rgba(255, 255, 255, 0.85);
-  padding: 0.2rem 0.55rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 9999px;
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 0.7vw, 0.68rem);
   font-weight: 700;
   color: #0b4f3f;
   border: 1px solid rgba(255, 255, 255, 0.9);
@@ -351,11 +379,11 @@
   position: relative;
   z-index: 2;
   background: rgba(255, 255, 255, 0.9);
-  padding: 0.5rem 0.9rem;
-  border-radius: 12px;
+  padding: clamp(0.35rem, 0.7vh, 0.5rem) clamp(0.55rem, 1vw, 0.9rem);
+  border-radius: 10px;
   border: 1px solid #ffffff;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.85rem;
+  font-size: clamp(0.72rem, 0.85vw, 0.85rem);
   font-weight: 700;
   color: #0c3558;
   text-align: right;
@@ -367,31 +395,35 @@
   flex-shrink: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
+  gap: clamp(0.35rem, 0.6vw, 0.55rem);
+  height: clamp(48px, 6.2vh, 64px);
+  min-height: 0;
 }
 
 .metric-card {
   background: #ffffff;
-  border-radius: 12px;
-  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  padding: clamp(0.35rem, 0.7vh, 0.55rem) clamp(0.5rem, 0.8vw, 0.85rem);
   border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  height: 58px;
+  height: 100%;
+  min-height: 0;
 }
 
 .metric-card-inner {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: clamp(0.45rem, 0.6vw, 0.65rem);
+  min-width: 0;
 }
 
 .metric-icon-wrap {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: clamp(28px, 3.8vh, 36px);
+  height: clamp(28px, 3.8vh, 36px);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -401,10 +433,11 @@
 .metric-info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .metric-label {
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 0.68vw, 0.68rem);
   font-weight: 600;
   color: #64748b;
   line-height: 1;
@@ -412,14 +445,14 @@
 
 .metric-value {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
   font-weight: 800;
   color: #0f172a;
   line-height: 1.1;
 }
 
 .metric-sub {
-  font-size: 0.62rem;
+  font-size: clamp(0.55rem, 0.62vw, 0.62rem);
   font-weight: 600;
   color: #10b981;
 }
@@ -428,13 +461,14 @@
   color: #ef4444;
 }
 
-/* KIOSK MAIN SPLIT: LEFT (75%) + RIGHT (25%) */
+/* KIOSK MAIN SPLIT */
 .dash-kiosk-body-split {
   flex: 1;
   min-height: 0;
+  min-width: 0;
   display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 0.55rem;
+  grid-template-columns: 1fr clamp(240px, 20vw, 310px);
+  gap: clamp(0.35rem, 0.6vw, 0.55rem);
   overflow: hidden;
 }
 
@@ -442,8 +476,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.45rem;
+  gap: clamp(0.25rem, 0.5vh, 0.45rem);
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
@@ -451,8 +486,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.45rem;
+  gap: clamp(0.25rem, 0.5vh, 0.45rem);
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
@@ -460,19 +496,21 @@
 .dash-three-col-row {
   flex: 1;
   min-height: 0;
+  min-width: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
+  gap: clamp(0.35rem, 0.6vw, 0.5rem);
   overflow: hidden;
 }
 
-/* STUDENT DASHBOARD DEDICATED LAYOUT (PIXEL-PERFECT ALIGNMENT) */
+/* STUDENT DASHBOARD DEDICATED LAYOUT */
 .student-main-layout {
   flex: 1;
   min-height: 0;
+  min-width: 0;
   display: grid;
-  grid-template-columns: 1fr 310px;
-  gap: 0.55rem;
+  grid-template-columns: 1fr clamp(240px, 20vw, 310px);
+  gap: clamp(0.35rem, 0.6vw, 0.55rem);
   overflow: hidden;
 }
 
@@ -480,26 +518,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.45rem;
+  gap: clamp(0.25rem, 0.5vh, 0.45rem);
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
 .student-row-three {
   flex: 1;
   min-height: 0;
+  min-width: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
+  gap: clamp(0.35rem, 0.6vw, 0.5rem);
   overflow: hidden;
 }
 
 .student-row-bottom {
   flex: 0.95;
   min-height: 0;
+  min-width: 0;
   display: grid;
   grid-template-columns: 1.35fr 1fr;
-  gap: 0.5rem;
+  gap: clamp(0.35rem, 0.6vw, 0.5rem);
   overflow: hidden;
 }
 
@@ -507,17 +548,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.45rem;
+  gap: clamp(0.25rem, 0.5vh, 0.45rem);
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
 .student-achieve-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.35rem;
+  gap: 0.3rem;
   height: 100%;
   align-items: center;
+  min-height: 0;
 }
 
 .student-achieve-box {
@@ -526,47 +569,47 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.3rem 0.2rem;
-  border-radius: 8px;
+  padding: 0.25rem 0.15rem;
+  border-radius: 6px;
   background: #f8fafc;
   border: 1px solid #f1f5f9;
   height: 100%;
 }
 
 .student-achieve-icon-circle {
-  width: 28px;
-  height: 28px;
+  width: clamp(22px, 2.8vh, 28px);
+  height: clamp(22px, 2.8vh, 28px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  margin-bottom: 0.2rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.15rem;
 }
 
 .student-achieve-rank {
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 0.68vw, 0.68rem);
   font-weight: 700;
   color: #0f172a;
   line-height: 1.1;
 }
 
 .student-achieve-sub {
-  font-size: 0.56rem;
+  font-size: clamp(0.5rem, 0.56vw, 0.56rem);
   color: #475569;
   line-height: 1.15;
   margin-top: 1px;
 }
 
 .student-achieve-date {
-  font-size: 0.52rem;
+  font-size: 0.5rem;
   color: #94a3b8;
 }
 
 .student-gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.45rem;
+  gap: 0.4rem;
   flex: 1;
   min-height: 0;
 }
@@ -580,13 +623,13 @@
 
 .student-gallery-img {
   width: 100%;
-  height: 52px;
+  height: clamp(38px, 5.5vh, 52px);
   border-radius: 6px;
   object-fit: cover;
 }
 
 .student-gallery-title {
-  font-size: 0.65rem;
+  font-size: clamp(0.58rem, 0.65vw, 0.65rem);
   font-weight: 700;
   color: #0f172a;
   white-space: nowrap;
@@ -596,22 +639,23 @@
 }
 
 .student-gallery-date {
-  font-size: 0.55rem;
+  font-size: 0.52rem;
   color: #64748b;
 }
 
 /* GENERIC KIOSK CARD */
 .dash-card {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: clamp(10px, 1.4vh, 12px);
   border: 1px solid #e2e8f0;
-  padding: 0.65rem 0.85rem;
+  padding: clamp(0.45rem, 0.8vh, 0.65rem) clamp(0.55rem, 0.9vw, 0.85rem);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.4rem;
+  gap: 0.35rem;
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
@@ -621,7 +665,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.35rem;
+  gap: 0.3rem;
+  overflow-y: auto;
 }
 
 .dash-card-header {
@@ -629,22 +674,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
 }
 
 .dash-card-title {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.825rem;
+  font-size: clamp(0.74rem, 0.85vw, 0.85rem);
   font-weight: 700;
   color: #0f172a;
 }
 
 .dash-card-icon {
-  width: 24px;
-  height: 24px;
+  width: clamp(20px, 2.5vh, 24px);
+  height: clamp(20px, 2.5vh, 24px);
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -653,7 +698,7 @@
 }
 
 .dash-view-all {
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 0.68vw, 0.68rem);
   font-weight: 700;
   color: #0284c7;
   cursor: pointer;
@@ -666,26 +711,27 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.25rem;
+  gap: 0.2rem;
   min-height: 0;
+  overflow-y: auto;
 }
 
 .timetable-row {
   display: grid;
-  grid-template-columns: 110px 75px 1fr 85px;
+  grid-template-columns: clamp(80px, 8vw, 110px) clamp(55px, 6vw, 75px) 1fr clamp(65px, 7vw, 85px);
   align-items: center;
-  padding: 0.25rem 0.55rem;
+  padding: 0.2rem 0.45rem;
   background: #f8fafc;
-  border-radius: 6px;
-  font-size: 0.68rem;
+  border-radius: 5px;
+  font-size: clamp(0.6rem, 0.68vw, 0.68rem);
   font-weight: 600;
 }
 
 .class-tag {
   display: inline-block;
-  padding: 0.1rem 0.45rem;
+  padding: 0.08rem 0.4rem;
   border-radius: 4px;
-  font-size: 0.65rem;
+  font-size: clamp(0.58rem, 0.65vw, 0.65rem);
   font-weight: 700;
   text-align: center;
   width: fit-content;
@@ -702,13 +748,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.3rem 0.25rem;
+  padding: 0.25rem 0.2rem;
   border-bottom: 1px solid #f8fafc;
 }
 
 .event-date-box {
-  width: 32px;
-  height: 34px;
+  width: clamp(26px, 3.2vh, 32px);
+  height: clamp(28px, 3.4vh, 34px);
   border-radius: 6px;
   background: #eff6ff;
   color: #1d4ed8;
@@ -722,59 +768,66 @@
 }
 
 .event-day {
-  font-size: 0.85rem;
+  font-size: clamp(0.72rem, 0.85vw, 0.85rem);
   font-weight: 800;
 }
 
 .event-month {
-  font-size: 0.55rem;
+  font-size: clamp(0.48rem, 0.55vw, 0.55rem);
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .event-text {
   flex: 1;
-  margin-left: 0.55rem;
+  margin-left: 0.45rem;
+  min-width: 0;
 }
 
 .event-name {
-  font-size: 0.72rem;
+  font-size: clamp(0.66rem, 0.74vw, 0.74rem);
   font-weight: 700;
   color: #0f172a;
   line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .event-meta {
-  font-size: 0.62rem;
+  font-size: clamp(0.56rem, 0.62vw, 0.62rem);
   color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* COMPACT NOTICES */
 .notice-item-row {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.3rem 0;
+  gap: 0.45rem;
+  padding: 0.25rem 0;
   border-bottom: 1px solid #f8fafc;
 }
 
 .notice-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   margin-top: 4px;
   flex-shrink: 0;
 }
 
 .notice-title {
-  font-size: 0.7rem;
+  font-size: clamp(0.64rem, 0.7vw, 0.7rem);
   font-weight: 600;
   color: #1e293b;
   line-height: 1.2;
 }
 
 .notice-date {
-  font-size: 0.6rem;
+  font-size: 0.56rem;
   color: #94a3b8;
 }
 
@@ -782,27 +835,28 @@
 .student-profile-panel {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
 .student-big-avatar {
-  width: 52px;
-  height: 52px;
+  width: clamp(40px, 5vh, 52px);
+  height: clamp(40px, 5vh, 52px);
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
 }
 
 .student-name-big {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
   font-weight: 800;
   color: #0f172a;
 }
 
 .student-class-text {
-  font-size: 0.68rem;
+  font-size: clamp(0.62rem, 0.68vw, 0.68rem);
   font-weight: 600;
   color: #475569;
 }
@@ -813,9 +867,9 @@
   gap: 0.25rem;
   background: #dcfce7;
   color: #15803d;
-  font-size: 0.62rem;
+  font-size: clamp(0.56rem, 0.62vw, 0.62rem);
   font-weight: 700;
-  padding: 0.1rem 0.45rem;
+  padding: 0.08rem 0.4rem;
   border-radius: 9999px;
   width: fit-content;
   margin-top: 2px;
@@ -825,21 +879,21 @@
 .quick-actions-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .action-tile-btn {
   background: #f8fafc;
   border: 1px solid #f1f5f9;
-  border-radius: 8px;
-  padding: 0.45rem 0.25rem;
+  border-radius: 6px;
+  padding: 0.35rem 0.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
   cursor: pointer;
-  border: none;
+  min-height: 40px;
 }
 
 .action-tile-btn:hover {
@@ -848,9 +902,9 @@
 }
 
 .action-tile-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  width: clamp(22px, 2.8vh, 28px);
+  height: clamp(22px, 2.8vh, 28px);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -858,7 +912,7 @@
 }
 
 .action-tile-label {
-  font-size: 0.64rem;
+  font-size: clamp(0.58rem, 0.64vw, 0.64rem);
   font-weight: 700;
   color: #334155;
   line-height: 1.05;
@@ -869,8 +923,8 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  height: 85px;
-  padding-top: 0.75rem;
+  height: clamp(60px, 8vh, 85px);
+  padding-top: 0.45rem;
   border-bottom: 1.5px solid #e2e8f0;
 }
 
@@ -878,24 +932,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.15rem;
   height: 100%;
   justify-content: flex-end;
 }
 
 .perf-bar-fill {
-  width: 20px;
+  width: clamp(14px, 1.8vw, 20px);
   border-radius: 4px 4px 0 0;
 }
 
 .perf-bar-label {
-  font-size: 0.6rem;
+  font-size: clamp(0.55rem, 0.6vw, 0.6rem);
   font-weight: 700;
   color: #64748b;
 }
 
 .perf-bar-val {
-  font-size: 0.62rem;
+  font-size: clamp(0.55rem, 0.62vw, 0.62rem);
   font-weight: 800;
   color: #0f172a;
 }
@@ -904,14 +958,14 @@
 .achieve-row {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.3rem 0;
+  gap: 0.45rem;
+  padding: 0.25rem 0;
   border-bottom: 1px solid #f8fafc;
 }
 
 .achieve-icon {
-  width: 28px;
-  height: 28px;
+  width: clamp(22px, 2.8vh, 28px);
+  height: clamp(22px, 2.8vh, 28px);
   border-radius: 50%;
   background: #fef3c7;
   color: #d97706;
@@ -919,17 +973,20 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .achieve-title {
-  font-size: 0.72rem;
+  font-size: clamp(0.66rem, 0.72vw, 0.72rem);
   font-weight: 700;
   color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .achieve-meta {
-  font-size: 0.6rem;
+  font-size: clamp(0.54rem, 0.6vw, 0.6rem);
   color: #64748b;
 }
 
@@ -937,44 +994,46 @@
 .ai-assistant-card {
   background: linear-gradient(145deg, #0369a1 0%, #0284c7 60%, #38bdf8 100%);
   color: #ffffff;
-  border-radius: 12px;
-  padding: 0.75rem 0.85rem;
+  border-radius: clamp(10px, 1.4vh, 12px);
+  padding: clamp(0.5rem, 0.9vh, 0.75rem) clamp(0.65rem, 1vw, 0.85rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
   min-height: 0;
+  flex: 1;
 }
 
 .ai-header-group {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
 }
 
 .ai-header-text h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
+  font-size: clamp(0.82rem, 0.95vw, 0.95rem);
   font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .ai-header-text p {
-  font-size: 0.65rem;
+  font-size: clamp(0.58rem, 0.65vw, 0.65rem);
   opacity: 0.9;
   line-height: 1.15;
 }
 
 .ai-bot-circle {
-  width: 32px;
-  height: 32px;
+  width: clamp(26px, 3.2vh, 32px);
+  height: clamp(26px, 3.2vh, 32px);
   border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.8);
   overflow: hidden;
   background: #ffffff;
+  flex-shrink: 0;
 }
 
 .ai-bot-circle img {
@@ -986,17 +1045,17 @@
 .ai-prompt-pills {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.3rem;
-  margin-bottom: 0.5rem;
+  gap: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .ai-pill-btn {
   background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 9999px;
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem 0.45rem;
   color: #ffffff;
-  font-size: 0.64rem;
+  font-size: clamp(0.58rem, 0.64vw, 0.64rem);
   font-weight: 600;
   text-align: center;
   cursor: pointer;
@@ -1010,8 +1069,8 @@
   align-items: center;
   background: rgba(255, 255, 255, 0.96);
   border-radius: 9999px;
-  padding: 0.2rem 0.3rem 0.2rem 0.65rem;
-  height: 30px;
+  padding: 0.15rem 0.25rem 0.15rem 0.6rem;
+  height: clamp(26px, 3.2vh, 30px);
 }
 
 .ai-input-wrap input {
@@ -1019,13 +1078,14 @@
   border: none;
   background: transparent;
   outline: none;
-  font-size: 0.72rem;
+  font-size: clamp(0.66rem, 0.72vw, 0.72rem);
   color: #0f172a;
+  user-select: text;
 }
 
 .ai-send-btn {
-  width: 24px;
-  height: 24px;
+  width: clamp(20px, 2.5vh, 24px);
+  height: clamp(20px, 2.5vh, 24px);
   border-radius: 50%;
   background: #0284c7;
   color: #ffffff;
@@ -1034,20 +1094,24 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 /* COMPACT PHOTO GALLERY */
 .gallery-thumbs-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.35rem;
+  gap: 0.3rem;
+  flex: 1;
+  min-height: 0;
 }
 
 .gallery-thumb-item {
   position: relative;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
-  aspect-ratio: 4/3;
+  height: 100%;
+  min-height: 0;
 }
 
 .gallery-thumb-item img {
@@ -1059,13 +1123,14 @@
 /* COMPACT 360 VIRTUAL TOUR */
 .tour-card-banner {
   position: relative;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
-  height: 90px;
+  flex: 1;
+  min-height: clamp(55px, 7.5vh, 90px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0.65rem;
+  padding: 0.5rem;
 }
 
 .tour-card-banner img {
@@ -1086,13 +1151,13 @@
 
 .tour-badge-360 {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 5px;
+  right: 5px;
   z-index: 2;
   background: rgba(255, 255, 255, 0.85);
-  padding: 0.15rem 0.4rem;
+  padding: 0.1rem 0.35rem;
   border-radius: 4px;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 800;
   color: #0f172a;
 }
@@ -1103,35 +1168,35 @@
   background: #0284c7;
   color: #ffffff;
   border: none;
-  padding: 0.25rem 0.65rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 9999px;
-  font-size: 0.68rem;
+  font-size: clamp(0.62rem, 0.68vw, 0.68rem);
   font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
   width: fit-content;
   cursor: pointer;
 }
 
-/* COMPACT FOOTER - FIXED 30px */
+/* COMPACT FOOTER */
 .dash-footer {
   flex-shrink: 0;
-  height: 30px;
+  height: clamp(24px, 3vh, 30px);
   background: #ffffff;
   border-top: 1px solid #e2e8f0;
-  padding: 0 1.25rem;
+  padding: 0 clamp(0.75rem, 1.5vw, 1.25rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.7rem;
+  font-size: clamp(0.62rem, 0.7vw, 0.7rem);
   color: #64748b;
 }
 
 .dash-footer-badges {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.5rem, 1vw, 1rem);
   font-weight: 600;
 }
 
@@ -1142,24 +1207,25 @@
 }
 
 /* ============================================================
-   DEDICATED ALUMNI DASHBOARD STYLES (PIXEL-PERFECT ALIGNMENT)
+   DEDICATED ALUMNI DASHBOARD STYLES
    ============================================================ */
 
-/* MAIN 2-COLUMN SPLIT */
 .alumni-body-grid {
   flex: 1;
   min-height: 0;
+  min-width: 0;
   display: grid;
-  grid-template-columns: 1fr 315px;
-  gap: 0.55rem;
+  grid-template-columns: 1fr clamp(240px, 20vw, 315px);
+  gap: clamp(0.35rem, 0.6vw, 0.55rem);
   overflow: hidden;
 }
 
 .alumni-left-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.55rem;
+  gap: clamp(0.35rem, 0.6vw, 0.55rem);
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
@@ -1167,8 +1233,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.45rem;
+  gap: clamp(0.25rem, 0.5vh, 0.45rem);
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
@@ -1176,15 +1243,16 @@
 .alumni-action-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  gap: 0.45rem;
+  gap: clamp(0.25rem, 0.4vw, 0.45rem);
   flex-shrink: 0;
+  min-height: 0;
 }
 
 .alumni-action-card {
   position: relative;
   background: #ffffff;
-  border-radius: 12px;
-  padding: 0.55rem 0.6rem 0.45rem 0.6rem;
+  border-radius: 10px;
+  padding: 0.45rem 0.5rem 0.35rem 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1192,7 +1260,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
   cursor: pointer;
   transition: all 0.2s ease;
-  min-height: 72px;
+  min-height: clamp(60px, 7.5vh, 72px);
 }
 
 .alumni-action-card:hover {
@@ -1202,18 +1270,19 @@
 }
 
 .alumni-tile-icon-box {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  width: clamp(22px, 2.8vh, 28px);
+  height: clamp(22px, 2.8vh, 28px);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
+  flex-shrink: 0;
 }
 
 .alumni-tile-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.72rem;
+  font-size: clamp(0.64rem, 0.72vw, 0.72rem);
   font-weight: 700;
   color: #0f172a;
   line-height: 1.1;
@@ -1223,7 +1292,7 @@
 }
 
 .alumni-tile-sub {
-  font-size: 0.56rem;
+  font-size: clamp(0.5rem, 0.56vw, 0.56rem);
   color: #64748b;
   line-height: 1.15;
   margin-top: 1px;
@@ -1235,15 +1304,15 @@
 
 .alumni-tile-arrow-circle {
   position: absolute;
-  bottom: 6px;
-  right: 6px;
-  width: 16px;
-  height: 16px;
+  bottom: 5px;
+  right: 5px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.55rem;
+  font-size: 0.5rem;
 }
 
 /* ALUMNI UPCOMING EVENT ITEM */
@@ -1252,10 +1321,10 @@
   min-height: 0;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.45rem 0.65rem;
+  gap: 0.55rem;
+  padding: 0.35rem 0.55rem;
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #edf2f7;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: all 0.15s ease;
@@ -1267,9 +1336,9 @@
 }
 
 .alumni-event-date-box {
-  width: 38px;
-  height: 40px;
-  border-radius: 8px;
+  width: clamp(30px, 3.8vh, 38px);
+  height: clamp(32px, 4vh, 40px);
+  border-radius: 6px;
   background: #eff6ff;
   color: #0284c7;
   display: flex;
@@ -1282,26 +1351,14 @@
 }
 
 .alumni-event-day {
-  font-size: 0.95rem;
+  font-size: clamp(0.82rem, 0.95vw, 0.95rem);
   font-weight: 800;
 }
 
 .alumni-event-month {
-  font-size: 0.56rem;
+  font-size: clamp(0.48rem, 0.56vw, 0.56rem);
   font-weight: 700;
   text-transform: uppercase;
-}
-
-.alumni-event-icon-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #dbeafe;
-  color: #0284c7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
 }
 
 .alumni-event-details {
@@ -1310,24 +1367,24 @@
 }
 
 .alumni-event-title {
-  font-size: 0.78rem;
+  font-size: clamp(0.7rem, 0.78vw, 0.78rem);
   font-weight: 700;
   color: #0f172a;
   line-height: 1.2;
 }
 
 .alumni-event-meta {
-  font-size: 0.64rem;
+  font-size: clamp(0.56rem, 0.64vw, 0.64rem);
   color: #64748b;
-  margin-top: 2px;
+  margin-top: 1px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .alumni-event-arrow-circle {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #eff6ff;
   color: #0284c7;
@@ -1343,10 +1400,10 @@
   min-height: 0;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 0.65rem;
+  gap: 0.65rem;
+  padding: 0.4rem 0.55rem;
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #edf2f7;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: all 0.15s ease;
@@ -1358,9 +1415,9 @@
 }
 
 .alumni-update-thumb {
-  width: 68px;
-  height: 56px;
-  border-radius: 8px;
+  width: clamp(52px, 6.5vh, 68px);
+  height: clamp(42px, 5.2vh, 56px);
+  border-radius: 6px;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -1371,17 +1428,17 @@
 }
 
 .alumni-update-title {
-  font-size: 0.76rem;
+  font-size: clamp(0.68rem, 0.76vw, 0.76rem);
   font-weight: 700;
   color: #0f172a;
   line-height: 1.15;
 }
 
 .alumni-update-desc {
-  font-size: 0.64rem;
+  font-size: clamp(0.56rem, 0.64vw, 0.64rem);
   color: #64748b;
   line-height: 1.25;
-  margin: 2px 0;
+  margin: 1px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1390,20 +1447,20 @@
 .alumni-update-meta-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 2px;
+  gap: 0.45rem;
+  margin-top: 1px;
 }
 
 .alumni-update-date {
-  font-size: 0.6rem;
+  font-size: 0.56rem;
   color: #94a3b8;
 }
 
 .alumni-update-tag {
   display: inline-block;
-  padding: 0.1rem 0.45rem;
+  padding: 0.08rem 0.4rem;
   border-radius: 9999px;
-  font-size: 0.58rem;
+  font-size: 0.54rem;
   font-weight: 700;
 }
 
@@ -1411,8 +1468,8 @@
 .alumni-news-row {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.35rem 0;
+  gap: 0.55rem;
+  padding: 0.25rem 0;
   border-bottom: 1px solid #f8fafc;
   cursor: pointer;
   transition: opacity 0.15s ease;
@@ -1427,9 +1484,9 @@
 }
 
 .alumni-news-thumb {
-  width: 44px;
-  height: 38px;
-  border-radius: 6px;
+  width: clamp(34px, 4vh, 44px);
+  height: clamp(30px, 3.5vh, 38px);
+  border-radius: 5px;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -1440,33 +1497,38 @@
 }
 
 .alumni-news-title {
-  font-size: 0.68rem;
+  font-size: clamp(0.62rem, 0.68vw, 0.68rem);
   font-weight: 700;
   color: #0f172a;
   line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .alumni-news-date {
-  font-size: 0.58rem;
+  font-size: 0.54rem;
   color: #94a3b8;
   margin-top: 1px;
 }
 
 /* ============================================================
-   AUTHENTICATION LOGIN SCREEN STYLES (MATCHING user_login.png)
+   AUTHENTICATION LOGIN SCREEN STYLES
    ============================================================ */
 
 .login-page-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   user-select: none;
+  box-sizing: border-box;
 }
 
 .login-bg-layer {
@@ -1480,7 +1542,7 @@
 .login-gradient-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.72) 42%, rgba(255, 255, 255, 0.28) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.78) 42%, rgba(255, 255, 255, 0.35) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -1491,20 +1553,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.85rem 3rem 0.35rem 3rem;
+  padding: clamp(0.5rem, 1vh, 0.85rem) clamp(1rem, 3vw, 3rem) clamp(0.2rem, 0.5vh, 0.35rem) clamp(1rem, 3vw, 3rem);
   flex-shrink: 0;
 }
 
 .login-school-logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   cursor: pointer;
 }
 
 .login-logo-mark {
-  width: 40px;
-  height: 40px;
+  width: clamp(32px, 4vh, 40px);
+  height: clamp(32px, 4vh, 40px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1512,7 +1574,7 @@
 
 .login-school-names h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
   font-weight: 800;
   color: #0c3558;
   margin: 0;
@@ -1520,7 +1582,7 @@
 }
 
 .login-school-names p {
-  font-size: 0.72rem;
+  font-size: clamp(0.64rem, 0.72vw, 0.72rem);
   font-weight: 600;
   color: #059669;
   letter-spacing: 0.04em;
@@ -1530,14 +1592,14 @@
 .login-nav-right {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: clamp(0.6rem, 1vw, 1.25rem);
 }
 
 .login-motto-tag {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.76rem;
+  gap: 0.4rem;
+  font-size: clamp(0.68rem, 0.76vw, 0.76rem);
   font-weight: 700;
   color: #0c3558;
 }
@@ -1545,12 +1607,13 @@
 .login-back-kiosk-pill {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(203, 213, 225, 0.85);
   border-radius: 9999px;
-  padding: 0.38rem 0.95rem;
-  font-size: 0.75rem;
+  padding: 0.32rem 0.85rem;
+  min-height: 36px;
+  font-size: clamp(0.68rem, 0.75vw, 0.75rem);
   font-weight: 700;
   color: #1e293b;
   cursor: pointer;
@@ -1569,11 +1632,12 @@
   position: relative;
   z-index: 10;
   flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4.5rem;
-  max-width: 1460px;
+  padding: 0 clamp(1.2rem, 3.5vw, 4.5rem);
+  max-width: clamp(960px, 86vw, 1500px);
   margin: 0 auto;
   width: 100%;
 }
@@ -1585,17 +1649,17 @@
 }
 
 .login-welcome-tag {
-  font-size: 0.78rem;
+  font-size: clamp(0.7rem, 0.78vw, 0.78rem);
   font-weight: 800;
   letter-spacing: 0.16em;
   color: #475569;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
   display: block;
 }
 
 .login-hero-headline {
   font-family: 'Outfit', sans-serif;
-  font-size: 2.75rem;
+  font-size: clamp(1.8rem, 3.2vw, 2.75rem);
   font-weight: 900;
   color: #0c3558;
   line-height: 1.12;
@@ -1612,28 +1676,29 @@
   height: 4px;
   border-radius: 9999px;
   background: #059669;
-  margin: 0.45rem 0 0.75rem 0;
+  margin: clamp(0.3rem, 0.6vh, 0.45rem) 0 clamp(0.5rem, 1vh, 0.75rem) 0;
 }
 
 .login-hero-subtext {
-  font-size: 0.95rem;
+  font-size: clamp(0.82rem, 0.95vw, 0.95rem);
   color: #334155;
   font-weight: 500;
   line-height: 1.35;
-  margin-bottom: 1.25rem;
+  margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
 }
 
 .login-role-chips {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   flex-wrap: wrap;
 }
 
 .login-role-chip {
-  padding: 0.35rem 0.85rem;
+  padding: clamp(0.28rem, 0.5vh, 0.38rem) clamp(0.65rem, 0.9vw, 0.85rem);
+  min-height: 38px;
   border-radius: 9999px;
-  font-size: 0.72rem;
+  font-size: clamp(0.66rem, 0.72vw, 0.72rem);
   font-weight: 700;
   border: 1px solid rgba(12, 53, 88, 0.2);
   background: rgba(255, 255, 255, 0.8);
@@ -1656,13 +1721,13 @@
 
 /* RIGHT GLASSMORPHIC LOGIN CARD */
 .login-glass-card {
-  width: 390px;
-  background: rgba(255, 255, 255, 0.68);
+  width: clamp(310px, 28vw, 390px);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 24px;
-  padding: 1.85rem 2.2rem;
+  border-radius: clamp(16px, 2.2vh, 24px);
+  padding: clamp(1rem, 2vh, 1.85rem) clamp(1.1rem, 1.8vw, 2.2rem);
   box-shadow: 0 25px 50px -12px rgba(12, 53, 88, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.6);
   display: flex;
   flex-direction: column;
@@ -1670,31 +1735,32 @@
 }
 
 .login-card-crest {
-  width: 56px;
-  height: 56px;
+  width: clamp(42px, 5vh, 56px);
+  height: clamp(42px, 5vh, 56px);
   border-radius: 50%;
   background: #ffffff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.65rem;
+  margin-bottom: clamp(0.35rem, 0.8vh, 0.65rem);
   border: 1.5px solid rgba(226, 232, 240, 0.85);
+  flex-shrink: 0;
 }
 
 .login-card-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.45rem;
+  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
   font-weight: 800;
   color: #0c3558;
-  margin: 0 0 0.2rem 0;
+  margin: 0 0 0.15rem 0;
   text-align: center;
 }
 
 .login-card-sub {
-  font-size: 0.74rem;
+  font-size: clamp(0.66rem, 0.74vw, 0.74rem);
   color: #64748b;
-  margin: 0 0 1.15rem 0;
+  margin: 0 0 clamp(0.65rem, 1.2vh, 1.15rem) 0;
   text-align: center;
 }
 
@@ -1702,7 +1768,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: clamp(0.5rem, 0.9vh, 0.75rem);
 }
 
 .login-input-group {
@@ -1714,22 +1780,23 @@
 
 .login-input-icon {
   position: absolute;
-  left: 0.95rem;
+  left: 0.85rem;
   color: #64748b;
   pointer-events: none;
 }
 
 .login-input-field {
   width: 100%;
-  height: 42px;
+  height: clamp(38px, 4.5vh, 44px);
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(203, 213, 225, 0.8);
-  border-radius: 12px;
-  padding: 0 2.5rem 0 2.5rem;
-  font-size: 0.8rem;
+  border-radius: 10px;
+  padding: 0 2.4rem 0 2.4rem;
+  font-size: clamp(0.74rem, 0.8vw, 0.8rem);
   color: #0f172a;
   outline: none;
   transition: all 0.2s ease;
+  user-select: text;
 }
 
 .login-input-field:focus {
@@ -1740,20 +1807,21 @@
 
 .login-eye-btn {
   position: absolute;
-  right: 0.85rem;
+  right: 0.75rem;
   background: none;
   border: none;
   color: #94a3b8;
   cursor: pointer;
   display: flex;
   align-items: center;
+  padding: 4px;
 }
 
 .login-remember-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.72rem;
+  font-size: clamp(0.65rem, 0.72vw, 0.72rem);
   color: #475569;
   padding: 0 0.15rem;
 }
@@ -1778,14 +1846,15 @@
 }
 
 .login-submit-btn {
-  height: 44px;
+  height: clamp(40px, 4.8vh, 46px);
+  min-height: 42px;
   width: 100%;
   border-radius: 9999px;
   background: linear-gradient(90deg, #0c3558 0%, #0284c7 50%, #059669 100%);
   color: #ffffff;
   border: none;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 0.95vw, 0.95rem);
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -1794,7 +1863,6 @@
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
   transition: all 0.2s ease;
-  margin-top: 0.2rem;
 }
 
 .login-submit-btn:hover {
@@ -1805,8 +1873,8 @@
 .login-divider {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin: 0.15rem 0;
+  gap: 0.65rem;
+  margin: 0;
 }
 
 .login-divider-line {
@@ -1816,25 +1884,26 @@
 }
 
 .login-divider-text {
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 0.68vw, 0.68rem);
   font-weight: 700;
   color: #94a3b8;
   letter-spacing: 0.05em;
 }
 
 .login-secure-btn {
-  height: 40px;
+  height: clamp(36px, 4.2vh, 42px);
+  min-height: 38px;
   width: 100%;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(2, 132, 199, 0.25);
   color: #0c3558;
-  font-size: 0.78rem;
+  font-size: clamp(0.72rem, 0.78vw, 0.78rem);
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -1852,18 +1921,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 3rem 1.15rem 3rem;
+  padding: 0.35rem clamp(1rem, 3vw, 3rem) clamp(0.5rem, 1.2vh, 1.15rem) clamp(1rem, 3vw, 3rem);
   flex-shrink: 0;
 }
 
 .login-dock-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.95rem;
+  gap: clamp(0.6rem, 1vw, 0.95rem);
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 0.38rem 1.4rem;
+  padding: 0.3rem clamp(0.75rem, 1.2vw, 1.4rem);
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
@@ -1872,12 +1941,12 @@
 .login-dock-item {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.35rem;
 }
 
 .login-dock-icon {
-  width: 26px;
-  height: 26px;
+  width: clamp(22px, 2.6vh, 26px);
+  height: clamp(22px, 2.6vh, 26px);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1891,29 +1960,130 @@
 }
 
 .login-dock-bold {
-  font-size: 0.72rem;
+  font-size: clamp(0.66rem, 0.72vw, 0.72rem);
   font-weight: 700;
   color: #0c3558;
   line-height: 1.1;
 }
 
 .login-dock-sub {
-  font-size: 0.58rem;
+  font-size: clamp(0.54rem, 0.58vw, 0.58rem);
   color: #64748b;
   font-weight: 500;
 }
 
 .login-dock-separator {
   width: 1px;
-  height: 20px;
+  height: 18px;
   background: rgba(203, 213, 225, 0.8);
 }
 
 .login-bottom-motto {
-  font-size: 0.75rem;
+  font-size: clamp(0.68rem, 0.75vw, 0.75rem);
   font-weight: 600;
   color: #065f46;
   letter-spacing: 0.02em;
 }
 
+/* ============================================================
+   RESPONSIVE BREAKPOINTS FOR DASHBOARDS
+   ============================================================ */
 
+/* 1366x768 & Small Height Displays */
+@media (max-height: 850px) {
+  .dash-main-content {
+    padding: 0.25rem 0.65rem;
+    gap: 0.35rem;
+  }
+  .dash-hero-banner {
+    height: 76px;
+    padding: 0.4rem 1rem;
+  }
+  .dash-hero-title {
+    font-size: 1.15rem;
+  }
+  .dash-hero-desc {
+    font-size: 0.68rem;
+    margin-bottom: 0.15rem;
+  }
+  .metrics-grid-4 {
+    height: 48px;
+  }
+  .metric-card {
+    padding: 0.3rem 0.55rem;
+  }
+  .metric-icon-wrap {
+    width: 28px;
+    height: 28px;
+  }
+  .metric-value {
+    font-size: 1rem;
+  }
+  .dash-card {
+    padding: 0.4rem 0.6rem;
+  }
+  .alumni-action-card {
+    min-height: 58px;
+    padding: 0.35rem 0.4rem;
+  }
+  .login-center-content {
+    padding: 0 2rem;
+  }
+  .login-glass-card {
+    padding: 1rem 1.4rem;
+  }
+}
+
+/* 1280x720 Ultra-Compact Viewports */
+@media (max-height: 740px) {
+  .dash-hero-banner {
+    height: 64px;
+  }
+  .dash-hero-desc {
+    display: none;
+  }
+  .metrics-grid-4 {
+    height: 44px;
+  }
+  .metric-sub {
+    display: none;
+  }
+  .dash-navbar {
+    height: 44px;
+  }
+  .login-hero-headline {
+    font-size: 1.8rem;
+  }
+}
+
+/* High Resolution 2K & 4K Displays */
+@media (min-width: 2200px) and (min-height: 1200px) {
+  .dash-main-content {
+    max-width: 2600px;
+    padding: 1rem 2rem;
+    gap: 1rem;
+  }
+  .dash-hero-banner {
+    height: 140px;
+    padding: 1.25rem 2.5rem;
+  }
+  .dash-hero-title {
+    font-size: 2.2rem;
+  }
+  .dash-hero-desc {
+    font-size: 1.1rem;
+  }
+  .metrics-grid-4 {
+    height: 90px;
+  }
+  .metric-value {
+    font-size: 1.8rem;
+  }
+  .metric-icon-wrap {
+    width: 52px;
+    height: 52px;
+  }
+  .dash-card-title {
+    font-size: 1.2rem;
+  }
+}

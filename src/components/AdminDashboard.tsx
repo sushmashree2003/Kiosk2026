@@ -106,7 +106,7 @@ export default function AdminDashboard({ onBackToKiosk }: DashboardProps) {
             {/* Banner */}
             <section
               className="dash-hero-banner"
-              style={{ backgroundImage: `url('/campus_banner.jpg')`, height: "92px", padding: "0.65rem 1.5rem" }}
+              style={{ backgroundImage: `url('/campus_banner.jpg')` }}
             >
               <div className="dash-hero-left">
                 <h2 className="dash-hero-title" style={{ fontSize: "1.35rem" }}>Together for a Brighter Tomorrow</h2>
@@ -499,7 +499,7 @@ export default function AdminDashboard({ onBackToKiosk }: DashboardProps) {
           {/* RIGHT 25% AREA */}
           <div className="dash-kiosk-body-right">
             {/* AI Assistant */}
-            <div className="ai-assistant-card" style={{ height: "160px" }}>
+            <div className="ai-assistant-card">
               <div className="ai-header-group">
                 <div className="ai-header-text">
                   <h3>
@@ -542,7 +542,7 @@ export default function AdminDashboard({ onBackToKiosk }: DashboardProps) {
             </div>
 
             {/* Photo Gallery */}
-            <div className="dash-card" style={{ height: "115px" }}>
+            <div className="dash-card">
               <div className="dash-card-header">
                 <div className="dash-card-title">
                   <div className="dash-card-icon" style={{ background: "#fef3c7", color: "#d97706" }}>
@@ -566,13 +566,13 @@ export default function AdminDashboard({ onBackToKiosk }: DashboardProps) {
             </div>
 
             {/* Virtual Tour */}
-            <div className="dash-card" style={{ height: "105px" }}>
+            <div className="dash-card">
               <div className="dash-card-header">
                 <div className="dash-card-title">
                   <span>Virtual Tour</span>
                 </div>
               </div>
-              <div className="tour-card-banner" style={{ height: "70px" }}>
+              <div className="tour-card-banner">
                 <img src="/campus_360.jpg" alt="Campus 360" />
                 <span className="tour-badge-360">360°</span>
                 <button className="tour-start-btn">
@@ -587,8 +587,9 @@ export default function AdminDashboard({ onBackToKiosk }: DashboardProps) {
                 borderRadius: 10,
                 background: "linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)",
                 border: "1px solid #a7f3d0",
-                padding: "0.5rem",
+                padding: "0.45rem",
                 textAlign: "center",
+                flexShrink: 0,
               }}
             >
               <h4 style={{ fontFamily: "Outfit, sans-serif", fontSize: "0.85rem", fontWeight: 800, color: "#065f46" }}>

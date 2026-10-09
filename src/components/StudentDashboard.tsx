@@ -110,7 +110,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
       <div className="dash-ticker-bar">
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <span className="ticker-badge-live" style={{ background: "#10b981" }}>
-            <Sparkles size={11} /> Today's Current Affairs
+            <Sparkles size={11} /> Today&apos;s Current Affairs
           </span>
           <div className="ticker-content">
             <div className="ticker-item">
@@ -132,12 +132,12 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
 
       {/* MAIN VIEWPORT CONTENT (STRICT NO-SCROLL) */}
       <main className="dash-main-content">
-        {/* ROW 1: BANNER (74%) + AI ASSISTANT (26%) */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 310px", gap: "0.55rem", flexShrink: 0 }}>
+        {/* ROW 1: BANNER + AI ASSISTANT */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr clamp(240px, 20vw, 310px)", gap: "0.55rem", flexShrink: 0 }}>
           {/* Banner */}
           <section
             className="dash-hero-banner"
-            style={{ backgroundImage: `url('/campus_banner.jpg')`, height: "105px" }}
+            style={{ backgroundImage: `url('/campus_banner.jpg')` }}
           >
             <div className="dash-hero-left">
               <h2 className="dash-hero-title">Good Morning, Aarav!</h2>
@@ -156,7 +156,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
           </section>
 
           {/* AI Assistant */}
-          <div className="ai-assistant-card" style={{ height: "105px", padding: "0.55rem 0.75rem" }}>
+          <div className="ai-assistant-card" style={{ padding: "0.55rem 0.75rem" }}>
             <div className="ai-header-group" style={{ marginBottom: "0.25rem" }}>
               <div className="ai-header-text">
                 <h3 style={{ fontSize: "0.85rem" }}>
@@ -213,7 +213,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
                     <div className="dash-card-icon" style={{ background: "#dbeafe", color: "#1d4ed8" }}>
                       <CheckCircle2 size={14} />
                     </div>
-                    <span>My Child's Profile</span>
+                    <span>My Child&apos;s Profile</span>
                   </div>
                   <span className="dash-view-all">View Profile →</span>
                 </div>
@@ -354,7 +354,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
                     <div className="dash-card-icon" style={{ background: "#dbeafe", color: "#1d4ed8" }}>
                       <Clock size={14} />
                     </div>
-                    <span>Today's Schedule</span>
+                    <span>Today&apos;s Schedule</span>
                   </div>
                   <span className="dash-view-all">Full Timetable →</span>
                 </div>
@@ -437,7 +437,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
                       <span className="event-month">Oct</span>
                     </div>
                     <div className="event-text" style={{ flex: 1, minWidth: 0, padding: "0 0.5rem" }}>
-                      <div className="event-name" style={{ fontSize: "0.74rem", fontWeight: 700 }}>Children's Day Celebration</div>
+                      <div className="event-name" style={{ fontSize: "0.74rem", fontWeight: 700 }}>Children&apos;s Day Celebration</div>
                       <div className="event-meta">09:00 AM - 12:00 PM • Auditorium</div>
                     </div>
                     <ChevronRight size={14} style={{ color: "#94a3b8" }} />
@@ -516,7 +516,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
                   </div>
                   <div className="student-gallery-item">
                     <img src="/school_background.jpg" alt="Teachers Day" className="student-gallery-img" />
-                    <div className="student-gallery-title">Teachers' Day</div>
+                    <div className="student-gallery-title">Teachers&apos; Day</div>
                     <div className="student-gallery-date">05 Sep 2025</div>
                   </div>
                 </div>
@@ -570,7 +570,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
           {/* Right Sidebar Column */}
           <div className="student-right-col">
             {/* 9. School Virtual Tour */}
-            <div className="dash-card" style={{ height: "135px" }}>
+            <div className="dash-card">
               <div className="dash-card-header">
                 <div className="dash-card-title">
                   <div className="dash-card-icon" style={{ background: "#ede9fe", color: "#7c3aed" }}>
@@ -580,7 +580,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
                 </div>
                 <span className="dash-view-all">360° View</span>
               </div>
-              <div className="tour-card-banner" style={{ flex: 1, height: "auto" }}>
+              <div className="tour-card-banner" style={{ flex: 1, minHeight: "65px" }}>
                 <img src="/campus_360.jpg" alt="Campus Tour" />
                 <span className="tour-badge-360">360°</span>
                 <button className="tour-start-btn">
@@ -590,7 +590,7 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
             </div>
 
             {/* 10. Shortcuts */}
-            <div className="dash-card" style={{ height: "135px" }}>
+            <div className="dash-card">
               <div className="dash-card-header">
                 <div className="dash-card-title">
                   <div className="dash-card-icon" style={{ background: "#e0f2fe", color: "#0284c7" }}>
@@ -633,21 +633,21 @@ export default function StudentDashboard({ onBackToKiosk }: DashboardProps) {
                 borderRadius: 12,
                 background: "linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)",
                 border: "1px solid #a7f3d0",
-                padding: "0.85rem 1rem",
+                padding: "0.55rem 0.85rem",
                 textAlign: "center",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
                 boxShadow: "0 2px 6px rgba(0, 0, 0, 0.02)",
-                height: "100px",
+                minHeight: "65px",
               }}
             >
-              <div style={{ fontSize: "1.2rem", marginBottom: "0.2rem" }}>🌿🏫✨</div>
-              <h4 style={{ fontFamily: "Outfit, sans-serif", fontSize: "0.86rem", fontWeight: 800, color: "#065f46", lineHeight: 1.25, margin: 0 }}>
+              <div style={{ fontSize: "1.1rem", marginBottom: "0.15rem" }}>🌿🏫✨</div>
+              <h4 style={{ fontFamily: "Outfit, sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#065f46", lineHeight: 1.25, margin: 0 }}>
                 A Great Place to Learn, Grow and Belong ♡
               </h4>
-              <p style={{ fontSize: "0.62rem", color: "#047857", margin: "2px 0 0 0", fontWeight: 600 }}>
+              <p style={{ fontSize: "0.6rem", color: "#047857", margin: "2px 0 0 0", fontWeight: 600 }}>
                 Green Valley Public School
               </p>
             </div>

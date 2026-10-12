@@ -25,9 +25,19 @@ import {
   Sparkles,
   Maximize,
   Minimize,
+  Clock,
+  Award,
+  ShieldCheck,
+  Cpu,
+  Tv,
+  Activity,
+  CheckCircle2,
+  School,
+  Building2,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { RoleType } from "@/components/LoginScreen";
+import RoleSelectionScreen from "@/components/RoleSelectionScreen";
 
 export default function Home() {
   const router = useRouter();
@@ -214,65 +224,87 @@ export default function Home() {
               </div>
             </header>
 
-            {/* 2. HERO BANNER */}
-            <div
-              className="hp-hero-card"
-              style={{ backgroundImage: `url('/hero_school_building.jpg')` }}
-            >
+            {/* 2. HERO BANNER - DATA DRIVEN (NO IMAGE) */}
+            <div className="hp-hero-card hp-hero-card-data">
               <div className="hp-hero-content">
-                <p className="hp-hero-welcome">Welcome to</p>
+                <div className="hp-hero-top-badge">
+                  <ShieldCheck size={14} className="text-emerald-400" />
+                  <span>CBSE Affiliated Sr. Secondary School • Affiliation No: 1930281 • School Code: 45210</span>
+                </div>
                 <h2 className="hp-hero-title">Green Valley Public School</h2>
                 <p className="hp-hero-subtext">
-                  A place to learn, grow and build brighter futures.
+                  Kiosk Portal • Empowering Minds, Inspiring Character & Building Leaders Since 1999
                 </p>
 
                 <div className="hp-hero-stats">
                   <div className="hp-stat-pill">
-                    <div className="hp-stat-icon bg-emerald-500">
-                      <GraduationCap size={16} />
+                    <div className="hp-stat-icon bg-emerald-600">
+                      <GraduationCap size={15} />
                     </div>
                     <div>
-                      <div className="hp-stat-num">25+</div>
-                      <div className="hp-stat-desc">Years of Excellence</div>
+                      <div className="hp-stat-num">25+ Years</div>
+                      <div className="hp-stat-desc">Academic Legacy</div>
                     </div>
                   </div>
 
                   <div className="hp-stat-pill">
-                    <div className="hp-stat-icon bg-purple-500">
-                      <Users size={16} />
+                    <div className="hp-stat-icon bg-purple-600">
+                      <Users size={15} />
                     </div>
                     <div>
-                      <div className="hp-stat-num">6000+</div>
-                      <div className="hp-stat-desc">Happy Students</div>
+                      <div className="hp-stat-num">6,200+</div>
+                      <div className="hp-stat-desc">Enrolled Students</div>
                     </div>
                   </div>
 
                   <div className="hp-stat-pill">
-                    <div className="hp-stat-icon bg-amber-500">
-                      <Trophy size={16} />
+                    <div className="hp-stat-icon bg-amber-600">
+                      <Award size={15} />
                     </div>
                     <div>
-                      <div className="hp-stat-num">100+</div>
-                      <div className="hp-stat-desc">Awards & Recognitions</div>
+                      <div className="hp-stat-num">180+ Faculty</div>
+                      <div className="hp-stat-desc">1:18 Teacher Ratio</div>
                     </div>
                   </div>
 
                   <div className="hp-stat-pill">
-                    <div className="hp-stat-icon bg-sky-500">
-                      <Sparkles size={16} />
+                    <div className="hp-stat-icon bg-sky-600">
+                      <Trophy size={15} />
                     </div>
                     <div>
-                      <div className="hp-stat-num">Modern Campus</div>
-                      <div className="hp-stat-desc">with World-class Facilities</div>
+                      <div className="hp-stat-num">100% Pass</div>
+                      <div className="hp-stat-desc">CBSE Board Exam</div>
+                    </div>
+                  </div>
+
+                  <div className="hp-stat-pill">
+                    <div className="hp-stat-icon bg-rose-600">
+                      <Building2 size={15} />
+                    </div>
+                    <div>
+                      <div className="hp-stat-num">45 Smart Labs</div>
+                      <div className="hp-stat-desc">IoT & STEM Ready</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Aesthetic floating cursive accents */}
-              <div className="hp-hero-floating-text">
-                <div className="hp-dream-text">Dream • Learn • Achieve</div>
-                <div className="hp-steps-text">Small Steps • Big Dreams.</div>
+              {/* Institutional Key Metrics Box (Data-driven replacement for cursive text over photo) */}
+              <div className="hp-hero-kpi-panel">
+                <div className="hp-kpi-item">
+                  <span className="hp-kpi-val">98.4%</span>
+                  <span className="hp-kpi-lbl">Top Board Score</span>
+                </div>
+                <div className="hp-kpi-divider"></div>
+                <div className="hp-kpi-item">
+                  <span className="hp-kpi-val">Grade A++</span>
+                  <span className="hp-kpi-lbl">Quality Accredited</span>
+                </div>
+                <div className="hp-kpi-divider"></div>
+                <div className="hp-kpi-item">
+                  <span className="hp-kpi-val">100+</span>
+                  <span className="hp-kpi-lbl">State Trophies</span>
+                </div>
               </div>
             </div>
 
@@ -310,57 +342,75 @@ export default function Home() {
               <div className="hp-card">
                 <div className="hp-card-title-row">
                   <div className="hp-card-heading">
-                    <Trophy size={18} className="text-amber-500" />
+                    <div className="hp-card-icon-pill bg-amber-50 text-amber-600">
+                      <Trophy size={15} />
+                    </div>
                     <span>Our Achievements</span>
+                    <span className="hp-header-badge gold">3 Recent</span>
                   </div>
                   <span className="hp-view-all">
                     View All <ArrowRight size={12} />
                   </span>
                 </div>
 
-                <div className="hp-achievements-row">
+                <div className="hp-achievements-list">
                   {/* Item 1 */}
-                  <div className="hp-achievement-item">
-                    <div className="hp-achievement-img-wrap">
-                      <img src="/achievement_math.jpg" alt="Mathematics Quiz" />
-                      <div className="hp-rank-badge">
-                        <Star size={10} fill="#ffffff" /> 1st Rank
-                      </div>
+                  <div className="hp-achieve-card hp-data-card">
+                    <div className="hp-achieve-databox gold">
+                      <span className="hp-databox-rank">1st</span>
+                      <span className="hp-databox-score">98/100</span>
                     </div>
-                    <div className="hp-achievement-body">
-                      <div className="hp-ach-title">Mathematics Quiz</div>
-                      <div className="hp-ach-sub">Inter School Competition</div>
-                      <div className="hp-ach-date">Aug 2025</div>
+                    <div className="hp-achieve-content">
+                      <div className="hp-achieve-meta-row">
+                        <span className="hp-achieve-pill gold">
+                          <Trophy size={10} /> District Champion
+                        </span>
+                        <span className="hp-achieve-date">Aug 2025</span>
+                      </div>
+                      <h4 className="hp-achieve-name">Inter-School Mathematics Quiz</h4>
+                      <p className="hp-achieve-desc">
+                        Team of 4 • 42 Schools Competed • Final Round 100% Accuracy
+                      </p>
                     </div>
                   </div>
 
                   {/* Item 2 */}
-                  <div className="hp-achievement-item">
-                    <div className="hp-achievement-img-wrap">
-                      <img src="/achievement_cricket.jpg" alt="Cricket Tournament" />
-                      <div className="hp-rank-badge" style={{ background: "linear-gradient(135deg, #f59e0b, #b45309)" }}>
-                        <Trophy size={10} /> Best Player
-                      </div>
+                  <div className="hp-achieve-card hp-data-card">
+                    <div className="hp-achieve-databox amber">
+                      <span className="hp-databox-rank">MVP</span>
+                      <span className="hp-databox-score">84r & 3w</span>
                     </div>
-                    <div className="hp-achievement-body">
-                      <div className="hp-ach-title">Cricket Tournament</div>
-                      <div className="hp-ach-sub">Inter School</div>
-                      <div className="hp-ach-date">Sep 2025</div>
+                    <div className="hp-achieve-content">
+                      <div className="hp-achieve-meta-row">
+                        <span className="hp-achieve-pill amber">
+                          <Award size={10} /> Best Player Award
+                        </span>
+                        <span className="hp-achieve-date">Sep 2025</span>
+                      </div>
+                      <h4 className="hp-achieve-name">Inter-School Cricket Tournament</h4>
+                      <p className="hp-achieve-desc">
+                        Under-16 Finals Winner • 84 runs off 42 balls & 3 wickets
+                      </p>
                     </div>
                   </div>
 
                   {/* Item 3 */}
-                  <div className="hp-achievement-item">
-                    <div className="hp-achievement-img-wrap">
-                      <img src="/achievement_science.jpg" alt="Science Exhibition" />
-                      <div className="hp-rank-badge" style={{ background: "linear-gradient(135deg, #64748b, #475569)" }}>
-                        2 2nd Place
-                      </div>
+                  <div className="hp-achieve-card hp-data-card">
+                    <div className="hp-achieve-databox slate">
+                      <span className="hp-databox-rank">2nd</span>
+                      <span className="hp-databox-score">96.5%</span>
                     </div>
-                    <div className="hp-achievement-body">
-                      <div className="hp-ach-title">Science Exhibition</div>
-                      <div className="hp-ach-sub">District Level</div>
-                      <div className="hp-ach-date">Aug 2025</div>
+                    <div className="hp-achieve-content">
+                      <div className="hp-achieve-meta-row">
+                        <span className="hp-achieve-pill slate">
+                          <Star size={10} /> 2nd Place Silver
+                        </span>
+                        <span className="hp-achieve-date">Aug 2025</span>
+                      </div>
+                      <h4 className="hp-achieve-name">State Science & Innovation Fair</h4>
+                      <p className="hp-achieve-desc">
+                        Eco-Smart Solar Grid Model • 68 Projects Evaluated
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -370,125 +420,237 @@ export default function Home() {
               <div className="hp-card">
                 <div className="hp-card-title-row">
                   <div className="hp-card-heading">
-                    <Calendar size={18} className="text-rose-500" />
+                    <div className="hp-card-icon-pill bg-rose-50 text-rose-600">
+                      <Calendar size={15} />
+                    </div>
                     <span>Upcoming Events</span>
+                    <span className="hp-header-badge rose">4 Upcoming</span>
                   </div>
                   <span className="hp-view-all">
-                    View All <ArrowRight size={12} />
+                    Calendar <ArrowRight size={12} />
                   </span>
                 </div>
 
                 <div className="hp-events-list">
                   {/* Event 1 */}
-                  <div className="hp-event-item">
-                    <div className="hp-event-date-pill bg-purple-100 text-purple-700">
+                  <div className="hp-event-card">
+                    <div className="hp-event-date-box bg-purple-50 text-purple-700 border-purple-200">
                       <span className="hp-event-day">25</span>
                       <span className="hp-event-month">Sep</span>
                     </div>
                     <div className="hp-event-details">
-                      <div className="hp-event-name">Parent Teacher Meeting</div>
-                      <div className="hp-event-time">
-                        10:00 AM – 12:00 PM | School Auditorium
+                      <div className="hp-event-meta-row">
+                        <span className="hp-event-tag cat-purple">Academics</span>
+                        <span className="hp-event-time">
+                          <Clock size={10} /> 10:00 AM – 12:00 PM
+                        </span>
                       </div>
+                      <h4 className="hp-event-title">Parent Teacher Meeting</h4>
+                      <p className="hp-event-venue">
+                        <MapPin size={10} /> Main Auditorium • All Classes
+                      </p>
                     </div>
                   </div>
 
                   {/* Event 2 */}
-                  <div className="hp-event-item">
-                    <div className="hp-event-date-pill bg-amber-100 text-amber-700">
+                  <div className="hp-event-card">
+                    <div className="hp-event-date-box bg-amber-50 text-amber-700 border-amber-200">
                       <span className="hp-event-day">28</span>
                       <span className="hp-event-month">Sep</span>
                     </div>
                     <div className="hp-event-details">
-                      <div className="hp-event-name">Sports Day Practice</div>
-                      <div className="hp-event-time">
-                        04:00 PM – 06:00 PM | Playground
+                      <div className="hp-event-meta-row">
+                        <span className="hp-event-tag cat-amber">Sports</span>
+                        <span className="hp-event-time">
+                          <Clock size={10} /> 04:00 PM – 06:00 PM
+                        </span>
                       </div>
+                      <h4 className="hp-event-title">Annual Sports Day Practice</h4>
+                      <p className="hp-event-venue">
+                        <MapPin size={10} /> Campus Playground • Track & Field
+                      </p>
                     </div>
                   </div>
 
                   {/* Event 3 */}
-                  <div className="hp-event-item">
-                    <div className="hp-event-date-pill bg-sky-100 text-sky-700">
+                  <div className="hp-event-card">
+                    <div className="hp-event-date-box bg-sky-50 text-sky-700 border-sky-200">
                       <span className="hp-event-day">02</span>
                       <span className="hp-event-month">Oct</span>
                     </div>
                     <div className="hp-event-details">
-                      <div className="hp-event-name">Science Exhibition</div>
-                      <div className="hp-event-time">
-                        All Day | School Campus
+                      <div className="hp-event-meta-row">
+                        <span className="hp-event-tag cat-sky">Science</span>
+                        <span className="hp-event-time">
+                          <Clock size={10} /> 09:30 AM – 03:30 PM
+                        </span>
                       </div>
+                      <h4 className="hp-event-title">District Science Expo 2026</h4>
+                      <p className="hp-event-venue">
+                        <MapPin size={10} /> Discovery Block Labs • Open Access
+                      </p>
                     </div>
                   </div>
 
                   {/* Event 4 */}
-                  <div className="hp-event-item">
-                    <div className="hp-event-date-pill bg-pink-100 text-pink-700">
+                  <div className="hp-event-card">
+                    <div className="hp-event-date-box bg-pink-50 text-pink-700 border-pink-200">
                       <span className="hp-event-day">10</span>
                       <span className="hp-event-month">Oct</span>
                     </div>
                     <div className="hp-event-details">
-                      <div className="hp-event-name">Children's Day Celebration</div>
-                      <div className="hp-event-time">
-                        09:00 AM – 12:00 PM | School Auditorium
+                      <div className="hp-event-meta-row">
+                        <span className="hp-event-tag cat-pink">Festival</span>
+                        <span className="hp-event-time">
+                          <Clock size={10} /> 09:00 AM – 01:00 PM
+                        </span>
                       </div>
+                      <h4 className="hp-event-title">Children&apos;s Day Celebration</h4>
+                      <p className="hp-event-venue">
+                        <MapPin size={10} /> School Auditorium • Cultural Stage
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* CARD 3: RECENT EVENTS */}
+              {/* CARD 3: RECENT HIGHLIGHTS */}
               <div className="hp-card">
                 <div className="hp-card-title-row">
                   <div className="hp-card-heading">
-                    <Camera size={18} className="text-teal-600" />
-                    <span>Recent Events</span>
+                    <div className="hp-card-icon-pill bg-teal-50 text-teal-600">
+                      <Camera size={15} />
+                    </div>
+                    <span>Recent Highlights</span>
+                    <span className="hp-header-badge teal">Campus Life</span>
                   </div>
                   <span className="hp-view-all">
-                    View Gallery <ArrowRight size={12} />
+                    Gallery <ArrowRight size={12} />
                   </span>
                 </div>
 
-                <div className="hp-photo-grid">
-                  <div className="hp-photo-item">
-                    <img src="/achievement_math.jpg" alt="Annual Day" />
-                    <div className="hp-photo-caption">Annual Day 2025</div>
+                <div className="hp-highlights-list">
+                  {/* Highlight 1 */}
+                  <div className="hp-highlight-card hp-data-card">
+                    <div className="hp-highlight-databox teal">
+                      <span className="hp-databox-num">500+</span>
+                      <span className="hp-databox-label">Audience</span>
+                    </div>
+                    <div className="hp-highlight-content">
+                      <div className="hp-highlight-header">
+                        <h4 className="hp-highlight-title">Annual Cultural Gala</h4>
+                        <span className="hp-highlight-badge teal">Gala</span>
+                      </div>
+                      <p className="hp-highlight-desc">
+                        48 Stage Performances • 6 Inter-House Dramas • Grand Symphony
+                      </p>
+                      <div className="hp-highlight-meta">
+                        <span>Sep 2025</span>
+                        <span>•</span>
+                        <span>Main Auditorium</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="hp-photo-item">
-                    <img src="/achievement_cricket.jpg" alt="Parade" />
-                    <div className="hp-photo-caption">Sports Parade</div>
+
+                  {/* Highlight 2 */}
+                  <div className="hp-highlight-card hp-data-card">
+                    <div className="hp-highlight-databox amber">
+                      <span className="hp-databox-num">1,200</span>
+                      <span className="hp-databox-label">Athletes</span>
+                    </div>
+                    <div className="hp-highlight-content">
+                      <div className="hp-highlight-header">
+                        <h4 className="hp-highlight-title">Inter-House Sports Parade</h4>
+                        <span className="hp-highlight-badge amber">Athletics</span>
+                      </div>
+                      <p className="hp-highlight-desc">
+                        32 Championship Events • 4 Houses • Ruby House Overall Trophy
+                      </p>
+                      <div className="hp-highlight-meta">
+                        <span>Aug 2025</span>
+                        <span>•</span>
+                        <span>Athletic Stadium</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="hp-photo-item">
-                    <img src="/achievement_science.jpg" alt="Science Expo" />
-                    <div className="hp-photo-caption">Science Expo</div>
+
+                  {/* Highlight 3 */}
+                  <div className="hp-highlight-card hp-data-card">
+                    <div className="hp-highlight-databox sky">
+                      <span className="hp-databox-num">45+</span>
+                      <span className="hp-databox-label">Projects</span>
+                    </div>
+                    <div className="hp-highlight-content">
+                      <div className="hp-highlight-header">
+                        <h4 className="hp-highlight-title">Robotics & Science Expo</h4>
+                        <span className="hp-highlight-badge sky">Innovation</span>
+                      </div>
+                      <p className="hp-highlight-desc">
+                        AI, IoT & Drone Demonstrations • 1,100 Community Visitors
+                      </p>
+                      <div className="hp-highlight-meta">
+                        <span>Aug 2025</span>
+                        <span>•</span>
+                        <span>STEM Labs Block</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="hp-photo-item">
-                    <img src="/school_background.jpg" alt="Teachers Day" />
-                    <div className="hp-photo-caption">Teachers Day</div>
+
+                  {/* Highlight 4 */}
+                  <div className="hp-highlight-card hp-data-card">
+                    <div className="hp-highlight-databox purple">
+                      <span className="hp-databox-num">85</span>
+                      <span className="hp-databox-label">Honorees</span>
+                    </div>
+                    <div className="hp-highlight-content">
+                      <div className="hp-highlight-header">
+                        <h4 className="hp-highlight-title">Teachers Day Felicitation</h4>
+                        <span className="hp-highlight-badge purple">Honors</span>
+                      </div>
+                      <p className="hp-highlight-desc">
+                        12 Distinguished Teaching Citations • Full Faculty Recognition
+                      </p>
+                      <div className="hp-highlight-meta">
+                        <span>Sep 2025</span>
+                        <span>•</span>
+                        <span>Staff Council</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* CARD 4: LOGIN TO CONTINUE */}
               <div className="hp-card hp-login-card">
-                <div className="hp-login-icon-box">
-                  <User size={28} />
+                <div className="hp-login-top">
+                  <div className="hp-login-icon-box">
+                    <User size={24} />
+                  </div>
+                  <span className="hp-login-chip">Portal Access</span>
                 </div>
-                <h3 className="hp-login-heading">Login to Continue</h3>
+                <h3 className="hp-login-heading">Role Login</h3>
                 <p className="hp-login-subtext">
-                  Access your profile, attendance, results, fees and more.
+                  Tap to sign in and view student progress, attendance, grades & fees.
                 </p>
+
+                <div className="hp-login-roles-preview">
+                  <span className="hp-role-pill">🎓 Student</span>
+                  <span className="hp-role-pill">👨‍🏫 Staff</span>
+                  <span className="hp-role-pill">⚙️ Admin</span>
+                  <span className="hp-role-pill">🤝 Alumni</span>
+                </div>
+
                 <button
                   className="hp-login-btn"
                   onClick={() => setActivePage("roles")}
                 >
-                  <span>Login</span>
-                  <ArrowRight size={16} />
+                  <span>Enter Portal</span>
+                  <ArrowRight size={15} />
                 </button>
               </div>
             </div>
 
-            {/* 5. BOTTOM GRID (CAMPUS & QUOTE) */}
+            {/* 5. BOTTOM GRID (CAMPUS FACILITIES & QUOTE) */}
             <div className="hp-bottom-grid">
               {/* EXPLORE OUR CAMPUS */}
               <div className="hp-campus-card">
@@ -498,9 +660,9 @@ export default function Home() {
                       <MapPin size={18} />
                     </div>
                     <div>
-                      <h3 className="hp-campus-title">Explore Our Campus</h3>
+                      <h3 className="hp-campus-title">Campus Facilities & Infrastructure</h3>
                       <p className="hp-campus-desc">
-                        Take a 360° virtual tour and experience our world-class facilities, classrooms, labs, library and more.
+                        World-class academic facilities, high-tech computer & science labs, library and sports arenas.
                       </p>
                     </div>
                   </div>
@@ -510,58 +672,107 @@ export default function Home() {
                   </button>
                 </div>
 
-                {/* 6 Thumbnails */}
-                <div className="hp-campus-thumbs">
-                  <div className="hp-thumb-item">
-                    <div className="hp-thumb-img-box">
-                      <img src="/hero_school_building.jpg" alt="Classrooms" />
+                {/* 6 Structured Dashboard Cards (Pure Data & Metrics - No Images) */}
+                <div className="hp-campus-facilities-grid">
+                  <div className="hp-facility-card hp-facility-datacard">
+                    <div className="hp-fac-top-bar">
+                      <div className="hp-fac-icon-pill bg-sky-50 text-sky-700">
+                        <Tv size={16} />
+                      </div>
+                      <span className="hp-fac-status active">● Active</span>
                     </div>
-                    <span className="hp-thumb-label">Classrooms</span>
+                    <div className="hp-facility-body">
+                      <div className="hp-fac-primary-metric">45 Rooms</div>
+                      <h4 className="hp-facility-name">Smart Classrooms</h4>
+                      <p className="hp-facility-spec">4K Interactive Displays • Climate Controlled • Ergonomic Desks</p>
+                      <span className="hp-facility-tag">100% Connected</span>
+                    </div>
                   </div>
 
-                  <div className="hp-thumb-item">
-                    <div className="hp-thumb-img-box">
-                      <img src="/achievement_science.jpg" alt="Science & Computer Labs" />
+                  <div className="hp-facility-card hp-facility-datacard">
+                    <div className="hp-fac-top-bar">
+                      <div className="hp-fac-icon-pill bg-purple-50 text-purple-700">
+                        <Cpu size={16} />
+                      </div>
+                      <span className="hp-fac-status active">● Active</span>
                     </div>
-                    <span className="hp-thumb-label">Science & Computer Labs</span>
+                    <div className="hp-facility-body">
+                      <div className="hp-fac-primary-metric">60+ Stations</div>
+                      <h4 className="hp-facility-name">Science & AI Labs</h4>
+                      <p className="hp-facility-spec">IoT Starter Kits • Physics & Chemistry Wet Labs • Robotics Bench</p>
+                      <span className="hp-facility-tag">STEM Enabled</span>
+                    </div>
                   </div>
 
-                  <div className="hp-thumb-item">
-                    <div className="hp-thumb-img-box">
-                      <img src="/achievement_math.jpg" alt="Library" />
+                  <div className="hp-facility-card hp-facility-datacard">
+                    <div className="hp-fac-top-bar">
+                      <div className="hp-fac-icon-pill bg-amber-50 text-amber-700">
+                        <BookOpen size={16} />
+                      </div>
+                      <span className="hp-fac-status open">● Open</span>
                     </div>
-                    <span className="hp-thumb-label">Library</span>
+                    <div className="hp-facility-body">
+                      <div className="hp-fac-primary-metric">15,000+ Vol.</div>
+                      <h4 className="hp-facility-name">Digital Library</h4>
+                      <p className="hp-facility-spec">RFID Self-Checkout • 50 Kindle Terminals • National E-Journals</p>
+                      <span className="hp-facility-tag">RFID Automated</span>
+                    </div>
                   </div>
 
-                  <div className="hp-thumb-item">
-                    <div className="hp-thumb-img-box">
-                      <img src="/achievement_cricket.jpg" alt="Sports Facilities" />
+                  <div className="hp-facility-card hp-facility-datacard">
+                    <div className="hp-fac-top-bar">
+                      <div className="hp-fac-icon-pill bg-emerald-50 text-emerald-700">
+                        <Activity size={16} />
+                      </div>
+                      <span className="hp-fac-status active">● Active</span>
                     </div>
-                    <span className="hp-thumb-label">Sports Facilities</span>
+                    <div className="hp-facility-body">
+                      <div className="hp-fac-primary-metric">4 Turf Courts</div>
+                      <h4 className="hp-facility-name">Sports Complex</h4>
+                      <p className="hp-facility-spec">Synthetic Athletic Track • 4 Cricket Nets • Multi-Discipline Gym</p>
+                      <span className="hp-facility-tag">Olympic Standard</span>
+                    </div>
                   </div>
 
-                  <div className="hp-thumb-item">
-                    <div className="hp-thumb-img-box">
-                      <img src="/campus_banner.jpg" alt="Auditorium" />
+                  <div className="hp-facility-card hp-facility-datacard">
+                    <div className="hp-fac-top-bar">
+                      <div className="hp-fac-icon-pill bg-indigo-50 text-indigo-700">
+                        <Users size={16} />
+                      </div>
+                      <span className="hp-fac-status ready">● Ready</span>
                     </div>
-                    <span className="hp-thumb-label">Auditorium</span>
+                    <div className="hp-facility-body">
+                      <div className="hp-fac-primary-metric">850 Seats</div>
+                      <h4 className="hp-facility-name">Grand Auditorium</h4>
+                      <p className="hp-facility-spec">Acoustic Surround Sound • 4K Laser Projection • Green Rooms</p>
+                      <span className="hp-facility-tag">Dolby 7.1 Sound</span>
+                    </div>
                   </div>
 
-                  <div className="hp-thumb-item">
-                    <div className="hp-thumb-img-box">
-                      <img src="/school_background.jpg" alt="Playground" />
+                  <div className="hp-facility-card hp-facility-datacard">
+                    <div className="hp-fac-top-bar">
+                      <div className="hp-fac-icon-pill bg-teal-50 text-teal-700">
+                        <Leaf size={16} />
+                      </div>
+                      <span className="hp-fac-status open">● Open</span>
                     </div>
-                    <span className="hp-thumb-label">Playground</span>
+                    <div className="hp-facility-body">
+                      <div className="hp-fac-primary-metric">2.5 Acres</div>
+                      <h4 className="hp-facility-name">Green Playgrounds</h4>
+                      <p className="hp-facility-spec">400m Athletic Track • Solar Floodlights • Eco Rain Harvesting</p>
+                      <span className="hp-facility-tag">Eco-Campus</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* QUOTE CARD */}
               <div className="hp-quote-card">
-                <Quote size={32} className="hp-quote-icon" />
+                <Quote size={28} className="hp-quote-icon" />
                 <p className="hp-quote-text">
-                  "Education is not just about books, it's about building a better tomorrow."
+                  &ldquo;Education is not just about books, it&apos;s about building a better tomorrow.&rdquo;
                 </p>
+                <span className="hp-quote-author">— Green Valley Mission</span>
               </div>
             </div>
 
@@ -600,337 +811,17 @@ export default function Home() {
       )}
 
       {/* =========================================================================
-         PAGE 2: ROLE SELECTOR SCREEN (MATCHES IMAGE 2 EXACTLY)
+         PAGE 2: ROLE SELECTOR SCREEN (MODULAR COMPONENT)
          ========================================================================= */}
       {activePage === "roles" && (
-        <main className="kiosk-container">
-          <div className="kiosk-content">
-            {/* TOP HEADER */}
-            <header className="top-header">
-              <div className="school-branding">
-                <button
-                  onClick={() => setActivePage("portal")}
-                  style={{
-                    background: "rgba(255, 255, 255, 0.9)",
-                    border: "1px solid #cbd5e1",
-                    borderRadius: "50%",
-                    width: 40,
-                    height: 40,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    cursor: "pointer",
-                    marginRight: "0.5rem",
-                    color: "#0369a1",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                  }}
-                  title="Back to School Home Portal"
-                >
-                  <ArrowLeft size={20} />
-                </button>
-                <div className="school-logo-box">
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M24 7C28 11 34 13 38 10C38 18 31 23 24 24C17 23 10 18 10 10C14 13 20 11 24 7Z"
-                      fill="#10b981"
-                    />
-                    <path
-                      d="M24 24V11"
-                      stroke="#059669"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M5 36C12 31.5 18 32.5 24 37C30 32.5 36 31.5 43 36V18C36 13.5 30 14.5 24 19C18 14.5 12 13.5 5 18V36Z"
-                      fill="#0369a1"
-                    />
-                    <path
-                      d="M24 19V37"
-                      stroke="#ffffff"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <div className="school-titles">
-                  <h1 className="school-name-text">Green Valley Public School</h1>
-                  <p className="school-motto-text">Learn • Grow • Excel</p>
-                </div>
-              </div>
-
-              <div className="status-pill-widget">
-                <div className="clock-info">
-                  <div className="calendar-icon-wrap">
-                    <Calendar size={20} />
-                  </div>
-                  <div className="clock-details">
-                    <span className="clock-date">
-                      {currentTime ? formatDate(currentTime) : "Sat, Sep 26, 2026"}
-                    </span>
-                    <span className="clock-time">
-                      {currentTime ? formatTime(currentTime) : "05:08 PM"}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="widget-divider"></div>
-
-                <div className="motto-stat-item">
-                  Better<br />Students
-                </div>
-                <div className="widget-divider"></div>
-                <div className="motto-stat-item">
-                  Brighter<br />Future
-                </div>
-
-                <div className="widget-divider"></div>
-
-                <button
-                  onClick={toggleFullscreen}
-                  style={{
-                    background: isFullscreen ? "#0284c7" : "rgba(2, 132, 199, 0.08)",
-                    color: isFullscreen ? "#ffffff" : "#0284c7",
-                    border: "1px solid rgba(2, 132, 199, 0.2)",
-                    borderRadius: "9999px",
-                    padding: "0.35rem 0.75rem",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.4rem",
-                    fontWeight: 700,
-                    fontSize: "0.78rem",
-                    transition: "all 0.2s ease",
-                  }}
-                  title={isFullscreen ? "Exit Fullscreen" : "Enter Kiosk Fullscreen Mode"}
-                >
-                  {isFullscreen ? <Minimize size={14} /> : <Maximize size={14} />}
-                  <span>{isFullscreen ? "Exit" : "Full Screen"}</span>
-                </button>
-              </div>
-            </header>
-
-            {/* HERO TITLE & SUBTITLE */}
-            <section className="hero-section">
-              <p className="welcome-label">Welcome to</p>
-              <h2 className="hero-school-title">Green Valley Public School</h2>
-              <p className="hero-subtitle">
-                A place to learn • A space to grow • A community to belong
-              </p>
-
-              <div className="hero-badges-row">
-                <div className="feature-pill">
-                  <div className="pill-icon-circle pill-blue">
-                    <GraduationCap size={16} />
-                  </div>
-                  <span>Quality Education</span>
-                </div>
-
-                <div className="feature-pill">
-                  <div className="pill-icon-circle pill-green">
-                    <Leaf size={16} />
-                  </div>
-                  <span>Holistic Growth</span>
-                </div>
-
-                <div className="feature-pill">
-                  <div className="pill-icon-circle pill-purple">
-                    <Users size={16} />
-                  </div>
-                  <span>Supportive Community</span>
-                </div>
-
-                <div className="feature-pill">
-                  <div className="pill-icon-circle pill-gold">
-                    <Star size={16} />
-                  </div>
-                  <span>Brighter Futures</span>
-                </div>
-              </div>
-            </section>
-
-            {/* 4 INTERACTIVE ROLE CARDS */}
-            <section className="cards-row">
-              {/* Card 1: Student / Parent */}
-              <div
-                className="role-card-item card-student"
-                onClick={() => handleSelectRole("student")}
-                role="button"
-                tabIndex={0}
-              >
-                <div className="avatar-halo-wrap">
-                  <div className="avatar-halo-bg"></div>
-                  <img
-                    src="/student_avatar.jpg"
-                    alt="Student / Parent"
-                    className="avatar-img-circle"
-                  />
-                  <div className="avatar-badge-icon">
-                    <BookOpen size={18} />
-                  </div>
-                </div>
-                <span className="role-prefix">I'm a</span>
-                <h3 className="role-heading">Student / Parent</h3>
-                <p className="role-subtext">
-                  Access my learning,<br />updates and more
-                </p>
-                <button
-                  className="role-action-btn"
-                  aria-label="Open Student and Parent Login"
-                >
-                  <ArrowRight size={22} strokeWidth={2.5} />
-                </button>
-              </div>
-
-              {/* Card 2: Staff */}
-              <div
-                className="role-card-item card-staff"
-                onClick={() => handleSelectRole("staff")}
-                role="button"
-                tabIndex={0}
-              >
-                <div className="avatar-halo-wrap">
-                  <div className="avatar-halo-bg"></div>
-                  <img
-                    src="/staff_avatar.jpg"
-                    alt="Staff Member"
-                    className="avatar-img-circle"
-                  />
-                  <div className="avatar-badge-icon">
-                    <Users size={18} />
-                  </div>
-                </div>
-                <span className="role-prefix">I'm a</span>
-                <h3 className="role-heading">Staff</h3>
-                <p className="role-subtext">
-                  Manage classes,<br />academic & school activities
-                </p>
-                <button className="role-action-btn" aria-label="Open Staff Login">
-                  <ArrowRight size={22} strokeWidth={2.5} />
-                </button>
-              </div>
-
-              {/* Card 3: Admin */}
-              <div
-                className="role-card-item card-admin"
-                onClick={() => handleSelectRole("admin")}
-                role="button"
-                tabIndex={0}
-              >
-                <div className="avatar-halo-wrap">
-                  <div className="avatar-halo-bg"></div>
-                  <img
-                    src="/admin_avatar.jpg"
-                    alt="School Administrator"
-                    className="avatar-img-circle"
-                  />
-                  <div className="avatar-badge-icon">
-                    <Settings size={18} />
-                  </div>
-                </div>
-                <span className="role-prefix">I'm an</span>
-                <h3 className="role-heading">Visitor</h3>
-                <p className="role-subtext">
-                  Control, configure<br />and manage the portal
-                </p>
-                <button className="role-action-btn" aria-label="Open Visitor Login">
-                  <ArrowRight size={22} strokeWidth={2.5} />
-                </button>
-              </div>
-
-              {/* Card 4: Alumni */}
-              <div
-                className="role-card-item card-alumni"
-                onClick={() => handleSelectRole("alumni")}
-                role="button"
-                tabIndex={0}
-              >
-                <div className="avatar-halo-wrap">
-                  <div className="avatar-halo-bg"></div>
-                  <img
-                    src="/alumni_avatar.jpg"
-                    alt="School Alumni"
-                    className="avatar-img-circle"
-                  />
-                  <div className="avatar-badge-icon">
-                    <Star size={18} />
-                  </div>
-                </div>
-                <span className="role-prefix">I'm an</span>
-                <h3 className="role-heading">Alumni</h3>
-                <p className="role-subtext">
-                  Stay connected,<br />relive your memories
-                </p>
-                <button className="role-action-btn" aria-label="Open Alumni Login">
-                  <ArrowRight size={22} strokeWidth={2.5} />
-                </button>
-              </div>
-            </section>
-
-            {/* BOTTOM FLOATING DOCK */}
-            <footer className="bottom-dock">
-              <div className="values-list">
-                <div className="value-point">
-                  <div
-                    className="value-point-icon"
-                    style={{ background: "#dbeafe", color: "#1d4ed8" }}
-                  >
-                    <Users size={16} />
-                  </div>
-                  <span>Every Learner Matters</span>
-                </div>
-
-                <div className="dock-separator"></div>
-
-                <div className="value-point">
-                  <div
-                    className="value-point-icon"
-                    style={{ background: "#dcfce7", color: "#15803d" }}
-                  >
-                    <Leaf size={16} />
-                  </div>
-                  <span>Stronger Together</span>
-                </div>
-
-                <div className="dock-separator"></div>
-
-                <div className="value-point">
-                  <div
-                    className="value-point-icon"
-                    style={{ background: "#fee2e2", color: "#dc2626" }}
-                  >
-                    <Heart size={16} />
-                  </div>
-                  <span>A Brighter Tomorrow</span>
-                </div>
-              </div>
-
-              <div
-                className="bot-trigger-wrap"
-                role="button"
-                tabIndex={0}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setBotModalOpen(true);
-                }}
-              >
-                <div className="bot-avatar-circle">
-                  <img src="/school_bot.jpg" alt="School AI Bot" />
-                </div>
-                <div className="bot-text-group">
-                  <span className="bot-text-title">Need Help?</span>
-                  <span className="bot-text-desc">Chat with our School Bot</span>
-                </div>
-                <ArrowRight size={18} className="bot-arrow" />
-              </div>
-            </footer>
-          </div>
-        </main>
+        <RoleSelectionScreen
+          onSelectRole={handleSelectRole}
+          onBackToPortal={() => setActivePage("portal")}
+          isFullscreen={isFullscreen}
+          toggleFullscreen={toggleFullscreen}
+          currentTime={currentTime}
+          onOpenBot={() => setBotModalOpen(true)}
+        />
       )}
 
       {/* =========================================================================
